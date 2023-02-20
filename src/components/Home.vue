@@ -50,19 +50,23 @@ export default {
 </script>
 
 <template>
-  <main>
-    <p>{{message}}</p>
-    <template v-if="token">
-      <button @click="logout">Logout</button>
-    </template>
-    <template v-else>
-      <button  @click="goToPage('/login')">Login</button>
-      <br>
-      <button  @click="goToPage('/register')" >Register</button>
-    </template>
-
-  </main>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Bienvenue sur notre site !</h1>
+    <main class="d-flex justify-content-center align-items-center flex-column">
+      <p class="text-center">{{ message }}</p>
+      <template v-if="token">
+        <button class="btn btn-primary my-2" @click="logout">Logout</button>
+      </template>
+      <template v-else>
+        <div class="d-flex flex-column">
+          <button class="btn btn-success my-2" @click="goToPage('/login')">Login</button>
+          <button class="btn btn-secondary my-2" @click="goToPage('/register')">Register</button>
+        </div>
+      </template>
+    </main>
+  </div>
 </template>
+
  <style>
  * {
    margin: 0;

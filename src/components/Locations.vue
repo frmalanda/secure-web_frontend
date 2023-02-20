@@ -1,24 +1,24 @@
 <template>
-  <h3 align="left"> Locations </h3>
-  <div>
-    <div v-for="location in currentLocations" :key="location._id">
-      <ul>
-        <li>
-          <a @click="locationDetails(location._id)">{{ location.filmName }}</a></li>
-      </ul>
-    </div>
-    <br />
-
+  <div class="container">
+    <h3 class="text-left">Locations</h3>
     <div>
-      <button @click="previousPage">Previous</button>
-      <button @click="nextPage">Next</button>
-
-      <button @click="addLocation">Add Location</button>
-
+      <div v-for="location in currentLocations" :key="location._id">
+        <ul>
+          <li>
+            <a @click="locationDetails(location._id)">{{ location.filmName }}</a>
+          </li>
+        </ul>
+      </div>
+      <br />
+      <div class="d-flex justify-content-between align-items-center">
+        <button class="btn btn-primary" @click="previousPage">Previous</button>
+        <button class="btn btn-primary" @click="nextPage">Next</button>
+        <button class="btn btn-success" @click="addLocation">Add Location</button>
+      </div>
     </div>
   </div>
-
 </template>
+
 
 <script>
 import axios from 'axios';
@@ -84,54 +84,57 @@ export default {
 </script>
 
 <style>
-* {
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+ul {
+  list-style: none;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-
-h3 {
-  font-size: 48px;
-  margin-bottom: 20px;
-  text-shadow: 1px 1px #000;
+ul li {
+  margin: 10px 0;
 }
 
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.card {
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  padding: 40px;
-  text-align: center;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-input {
+.btn {
+  padding: 10px 20px;
+  margin: 0 10px;
   border: none;
-  border-bottom: 2px solid #1c1c1c;
-  font-size: 18px;
-  margin-bottom: 20px;
-  padding: 10px;
-  width: 100%;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
-button {
-  background-color: #1c1c1c;
-  border: none;
+.btn-primary {
+  background-color: #007bff;
   color: #fff;
-  font-size: 18px;
-  padding: 10px;
-  width: 100%;
 }
 
+.btn-primary:hover {
+  background-color: #0062cc;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.d-flex {
+  display: flex;
+}
 </style>
